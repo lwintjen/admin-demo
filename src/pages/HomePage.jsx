@@ -26,6 +26,7 @@ export default function HomePage() {
     }
     useEffect(() => {
         if (user) fetchData()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [user])
 
     if (!user) 
