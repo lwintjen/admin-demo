@@ -1,0 +1,42 @@
+import { useState, useEffect } from "react"
+import CircularProgress from '@mui/material/CircularProgress';
+import { Box } from "@mui/material";
+import SignIn from './SignIn'
+import DenseAppBar from "../components/AppBar"
+import DataTable from "../components/Table"
+
+import { api } from "../api/api"
+
+ function CircularIndeterminate() {
+  return (
+    <Box sx={{ display: 'flex', alignItems: 'center', justifyContent:'center', height: '100vh' }}>
+      <CircularProgress />
+    </Box>
+  );
+}
+
+export default function HomePage() {
+    const [user,setUser] = useState()
+    const [data, setData] = useState()
+
+    const fetchData = async () => {
+        const res  = await api.getData(user.id)
+        console.log(res)
+        if (res && res.length > 0) setData(res)
+    }
+    useEffect(() => {
+        if (user) fetchData()
+    }, [user])
+
+    if (!user) 
+        return <SignIn setUser={setUser} />
+
+    if (!data)
+        return CircularIndeterminate()
+
+    return (
+    <>
+    <DenseAppBar user={user} setUser={setUser} />
+        <DataTable rows={data} />
+    </>)
+}
