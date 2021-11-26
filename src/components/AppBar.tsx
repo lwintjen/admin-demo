@@ -5,6 +5,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
+import headway from '../assets/headway_logo.png';
 
 const BasicMenu = (props: any) => {
     const { name, setUser } = props;
@@ -58,9 +59,9 @@ export default function DenseAppBar(props: any) {
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static">
                 <Toolbar variant="dense">
-                    <Typography variant="h6" color="inherit" component="div" sx={{ flexGrow: 1 }}>
-                        Headway BackOffice
-                    </Typography>
+                    <Box sx={{ flexGrow: 1 }}>
+                        <img width={'150px'} style={{ maxWidth: '200px' }} src={headway} alt={"headway"} />
+                    </Box>
                     <BasicMenu name={user.name} setUser={setUser} />
                 </Toolbar>
             </AppBar>

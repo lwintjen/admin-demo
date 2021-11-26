@@ -9,6 +9,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { api } from '../api/api';
+import headway from '../assets/headway_logo.png';
 
 export default function SignIn(props) {
     const {setUser} = props
@@ -35,12 +36,7 @@ export default function SignIn(props) {
             alignItems: 'center',
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-            <LockOutlinedIcon />
-          </Avatar>
-          <Typography component="h1" variant="h5">
-            Headway Backoffice
-          </Typography>
+        <img width={'300px'} style={{ maxWidth: '400px' }} src={headway} alt={"headway"} />
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
             <TextField
               margin="normal"
@@ -70,6 +66,7 @@ export default function SignIn(props) {
               type="submit"
               fullWidth
               variant="contained"
+              color="primary"
               sx={{ mt: 3, mb: 2 }}
             >
               Sign In
