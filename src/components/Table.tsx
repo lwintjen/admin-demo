@@ -23,7 +23,7 @@ const columns: GridColDef[] = [
     {
         field: 'location',
         headerName: 'Location',
-        width: 400,
+        width: 500,
     },
 ];
 
