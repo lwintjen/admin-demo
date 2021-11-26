@@ -1,4 +1,5 @@
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
+import { Box } from '@mui/material';
 
 const columns: GridColDef[] = [
     { field: 'id', headerName: 'ID', width: 120 },
@@ -30,7 +31,7 @@ export default function DataTable(props: any) {
     const { rows } = props;
 
     return (
-        <div style={{ height: '100vh', width: '100%' }}>
+        <Box p={2} style={{ height: '100vh', width: '100%' }}>
             <DataGrid
                 rows={rows}
                 columns={columns}
@@ -38,6 +39,6 @@ export default function DataTable(props: any) {
                 rowsPerPageOptions={[10]}
                 checkboxSelection
             />
-        </div>
+        </Box>
     );
 }
