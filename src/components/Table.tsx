@@ -1,45 +1,43 @@
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
+import { DataGrid, GridColDef } from '@mui/x-data-grid';
 
+const columns: GridColDef[] = [
+    { field: 'id', headerName: 'ID', width: 120 },
+    { field: 'firstName', headerName: 'First name', width: 150 },
+    { field: 'lastName', headerName: 'Last name', width: 150 },
+    {
+        field: 'phoneNumber',
+        headerName: 'Phone number',
+        width: 200,
+    },
+    {
+        field: 'email',
+        headerName: 'Email',
+        width: 400,
+    },
+    {
+        field: 'fullName',
+        headerName: 'Full name',
+        width: 300,
+    },
+    {
+        field: 'location',
+        headerName: 'Location',
+        width: 400,
+    },
+];
 
 export default function DataTable(props: any) {
     const { rows } = props;
+
     return (
-        <TableContainer component={Paper}>
-            <Table sx={{ minWidth: 650 }} aria-label="simple table">
-                <TableHead>
-                    <TableRow>
-                        <TableCell>FirstName</TableCell>
-                        <TableCell align="right">LastName</TableCell>
-                        <TableCell align="right">Phone number</TableCell>
-                        <TableCell align="right">Email</TableCell>
-                        <TableCell align="right">Name</TableCell>
-                        <TableCell align="right">Location</TableCell>
-                    </TableRow>
-                </TableHead>
-                <TableBody>
-                    {rows.map((row: any) => (
-                        <TableRow
-                            key={row[0]}
-                            sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                        >
-                            <TableCell component="th" scope="row">
-                                {row[1]}
-                            </TableCell>
-                            <TableCell align="right">{row[2]}</TableCell>
-                            <TableCell align="right">{row[3]}</TableCell>
-                            <TableCell align="right">{row[4]}</TableCell>
-                            <TableCell align="right">{row[5]}</TableCell>
-                            <TableCell align="right">{row[9]}</TableCell>
-                        </TableRow>
-                    ))}
-                </TableBody>
-            </Table>
-        </TableContainer>
+        <div style={{ height: '100vh', width: '100%' }}>
+            <DataGrid
+                rows={rows}
+                columns={columns}
+                pageSize={50}
+                rowsPerPageOptions={[10]}
+                checkboxSelection
+            />
+        </div>
     );
 }

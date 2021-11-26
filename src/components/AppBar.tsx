@@ -32,6 +32,7 @@ const BasicMenu = (props: any) => {
                 aria-expanded={open ? 'true' : undefined}
                 onClick={handleClick}
                 style={{ cursor: 'pointer' }}
+                color="primary"
             >
                 {name}
             </Typography>
@@ -57,7 +58,7 @@ export default function DenseAppBar(props: any) {
     const { user, setUser } = props;
     return (
         <Box sx={{ flexGrow: 1 }}>
-            <AppBar position="static">
+            <AppBar position="static" style={{ backgroundColor: "#F3FCF8" }}>
                 <Toolbar variant="dense">
                     <Box sx={{ flexGrow: 1 }}>
                         <img width={'150px'} style={{ maxWidth: '200px' }} src={headway} alt={"headway"} />
