@@ -17,6 +17,12 @@ class Api {
 
         return Promise.resolve(res.data);
     }
+
+    async getConfig(companyName: string): Promise<any> {
+        const res = await axios.get(`${baseApiUri}/company-cfg?companyName=${companyName}`);
+
+        return Promise.resolve(res.data);
+    }
 }
 
 export const api = new Api();

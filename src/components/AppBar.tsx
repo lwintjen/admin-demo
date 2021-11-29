@@ -5,7 +5,6 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import headway from '../assets/headway_logo.png';
 
 const BasicMenu = (props: any) => {
     const { name, setUser } = props;
@@ -55,13 +54,13 @@ const BasicMenu = (props: any) => {
 
 
 export default function DenseAppBar(props: any) {
-    const { user, setUser } = props;
+    const { user, setUser, config } = props;
     return (
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static" style={{ backgroundColor: "#F3FCF8" }}>
                 <Toolbar variant="dense">
                     <Box sx={{ flexGrow: 1 }}>
-                        <img width={'150px'} style={{ maxWidth: '200px' }} src={headway} alt={"headway"} />
+                        <img width={'150px'} style={{ maxWidth: '200px' }} src={config.logoUrl} alt={"headway"} />
                     </Box>
                     <BasicMenu name={user.name} setUser={setUser} />
                 </Toolbar>

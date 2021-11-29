@@ -1,28 +1,43 @@
-import React from 'react';
-import HomePage from './pages/HomePage';
+import React, { useState, useEffect } from 'react';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: "#13d183",
-      contrastText: "#fff"
-    },
-    secondary: {
-      main: "#fff",
-    }
-  }
-});
+import HomePage from './pages/HomePage';
+import Loading from './components/Loading';
+import { api } from "./api/api";
+import { Config } from './types';
 
-function App() {
+const App = () => {
+  const [config, setConfig] = useState<Config | undefined>();
+  useEffect(() => {
+    const fetchConfig = async () => {
+      const cfg: Config = await api.getConfig(process.env.REACT_APP_COMPANY_NAME ?? '');
+      setConfig(cfg);
+    };
+    fetchConfig();
+  }, []);
+
+  if (!config)
+    return <Loading />;
+
+  const theme = createTheme({
+    palette: {
+      primary: {
+        main: config.primaryColor,
+        contrastText: config.secondaryColor
+      },
+      secondary: {
+        main: config.secondaryColor,
+      }
+    }
+  });
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <HomePage />
+      <HomePage config={config} />
     </ThemeProvider>
 
   );
-}
+};
 
 export default App;
