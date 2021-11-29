@@ -47,7 +47,7 @@ const HomePage: FC<HomePageProps> = (props: any) => {
     }, [user]);
 
     if (!user)
-        return <SignIn setUser={setUser} />;
+        return <SignIn config={config} setUser={setUser} />;
 
     if (!data)
         return <Loading />;

@@ -6,10 +6,9 @@ import Checkbox from '@mui/material/Checkbox';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import { api } from '../api/api';
-import headway from '../assets/headway_logo.png';
 
 const SignIn = (props: any) => {
-  const { setUser } = props;
+  const { setUser, config } = props;
 
   const handleSubmit = async (event: any) => {
     event.preventDefault();
@@ -34,7 +33,7 @@ const SignIn = (props: any) => {
           alignItems: 'center',
         }}
       >
-        <img width={'300px'} style={{ maxWidth: '400px' }} src={headway} alt={"headway"} />
+        <img width={'300px'} style={{ maxWidth: '400px' }} src={config.logoUrl} alt={"headway"} />
         <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
           <TextField
             margin="normal"
